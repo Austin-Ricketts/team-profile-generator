@@ -2,7 +2,7 @@
 
 ### Description
 
-![https://img.shields.io/badge/Austin's-Team%20Generator-lightgrey](https://img.shields.io/badge/Austin's-Team%20Generator-lightgrey)
+![https://img.shields.io/badge/Austin's-Team%20Generator-lightgrey](https://github.com/Austin-Ricketts/team-profile-generator)
 
 Given that a user wishes to compile information about their software engineering team, this app will collect information from the user through the command line. The information gathered from user preferences will then be posted to a website accessible to the user. The type of information collected concerns the number of team members on the team, which can be any number desired. The team members may be engineers or interns. The Manager will be prompted for an office number. Engineers will be prompted for the GitHub user name. Interns will be prompted for the name of their school.
 
@@ -31,10 +31,9 @@ And [npm](https://www.npmjs.com/). Within the npm module system, this app has a 
 
 ### License
 
-![standard-readme compliant](https://img.shields.io/badge/License-MIT-yellow.svg)
-(https://opensource.org/licenses/MIT)
+![https://img.shields.io/badge/License-MIT-yellow.svg](https://opensource.org/licenses/MIT)
 
-Copyright 2020 © [Austin-Ricketts](https://github.com/Austin-Ricketts/team-profile-generator)
+Copyright 2020 © [Austin-Ricketts](https://github.com/Austin-Ricketts)
 
 ### Contributing
 
