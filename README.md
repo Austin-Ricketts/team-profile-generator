@@ -44,7 +44,7 @@ Contributors should follow the [Contributor Covenant](https://www.contributor-co
 
 ### Tests
 
-After installation, you can check the functionality of the app [here](https://github.com/Austin-Ricketts/team-profile-generator/tree/master/test)
+After installation, you can check the functionality of the app [here](https://github.com/Austin-Ricketts/team-profile-generator/tree/master/test).
 
 ### Questions
 
