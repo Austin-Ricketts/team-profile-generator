@@ -10,99 +10,130 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-inquirer.prompt([
-    {
-        type: "input",
-        name: "title",
-        message: "What is the title of your project?"
-    },
-    {
-        type: "input",
-        name: "badge",
-        message: "Put a link for your badge here."
-    },
-    {
-        type: "input",
-        name: "repoLink",
-        message: "Please add a link to your repository here."
-    },
-    {
-        type: "input",
-        name: "description",
-        message: "Describe your project."
-    },
-    {
-        type: "input",
-        name: "installation",
-        message: "Please add a note about how to install your application."
-    },
-    {
-        type: "input",
-        name: "usageName1",
-        message: "Please write the name of a dependency here."
-    },
-    {
-        type: "input",
-        name: "usageLink1",
-        message: "Please link to that dependency here."
-    },
-    {
-        type: "input",
-        name: "usageName2",
-        message: "Please write the name of another dependency here."
-    },
-    {
-        type: "input",
-        name: "usageLink2",
-        message: "Please write a link to that dependency here."
-    },
-    {
-        type: "input",
-        name: "license",
-        message: "Please enter a link for your license badge here."
-    },
-    {
-        type: "input",
-        name: "licenseInfo",
-        message: "Please place a link to information regarding your license here."
-    },
-    {
-        type: "input",
-        name: "copyright",
-        message: "What year are you copyrighting this?"
-    },
-    {
-        type: "input",
-        name: "tests",
-        message: "Please write information about tests here."
-    },
-    {
-        type: "input",
-        name: "developer",
-        message: "What is your GitHub user name?"
-    },
-    {
-        type: "input",
-        name: "profile",
-        message: "Please provide a link to your GitHub profile."
-    },
-    {
-        type: "input",
-        name: "email",
-        message: "What is your email address?"
-    },
-]).then(function(employees) {
-    const stringToWrite = render(employees);
+const employees = [];
 
-  fs.writeFile(outputPath, stringToWrite, function(err) {
+const init = () => {
+    inquirer.prompt([
+    {
+        name: "role",
+        type: "list",
+        message: "Please choose the Employee's role to be entered: ",
+        choices: ["Manager", "Engineer", "Intern"]
+        }
+    ])
+        .then((res) => {
+            if (res.role === "Manager") {addManager()}
+            else if (res.role === "Engineer") {addEngineer()}
+            else if (res.role === "Intern") {addIntern()}
+        });
+}
 
-    if (err) {
-      return console.log(err);
-    }
-    
+const buildTeam = () => {
+    inquirer.prompt([
+        {
+            type: 'confirm',
+            message: 'Would you like to keep building your team?',
+            name: 'build'
+        }
+    ])
+        .then((res) => {
+            if (res.build === true) {init();}
+            else if (res.build === false) {displayTeam();}
+        });
+}
 
-  });
+const addManager = () => {
+    inquirer.prompt([
+        {
+            name: "name",
+            type: "input",
+            message: "What is this Employee's name?",
+        },
+        {
+            name: "id",
+            type: "input",
+            message: "What is this Employee's ID?",
+        },
+        {
+            name: "email",
+            type: "input",
+            message: "What is this Employee's email address?",
+        },
+        {
+            name: "officeNumber",
+            type: "input",
+            message: "What is this Employee's Office Number?",
+        },
+    ]).then(addMan => {
+        const empAdd = new Manager(addMan.name, addMan.id, addMan.email, addMan.officeNumber);
+        employees.push(empAdd);
+        buildTeam();
 });
+const addEngineer = () => {
+    inquirer.prompt([
+        {
+            name: "name",
+            type: "input",
+            message: "What is this Employee's name?",
+        },
+        {
+            name: "id",
+            type: "input",
+            message: "What is this Employee's ID?",
+        },
+        {
+            name: "email",
+            type: "input",
+            message: "What is this Employee's email address?",
+        },
+        {
+            name: "github",
+            type: "input",
+            message: "What is this Employee's GitHub profile URL?",
+        },
+    ]).then(addEng => {
+        const empAdd = new Engineer(addEng.name, addEng.id, addEng.email, addEng.github);
+        employees.push(empAdd);
+        buildTeam();
+});
+const addIntern = () => {
+    inquirer.prompt([
+        {
+            name: "name",
+            type: "input",
+            message: "What is this Employee's name?",
+        },
+        {
+            name: "id",
+            type: "input",
+            message: "What is this Employee's ID?",
+        },
+        {
+            name: "email",
+            type: "input",
+            message: "What is this Employee's email address?",
+        },
+        {
+            name: "school",
+            type: "input",
+            message: "What is the name of this intern's school?",
+        },
+    ]).then(addInt => {
+        const empAdd = new Intern(addInt.name, addInt.id, addInt.email, addInt.school);
+        employees.push(empAdd);
+        buildTeam();
+});
+
+const displayTeam = () => {
+    const stringToWrite = render(employees);
+    fs.writeFile(outputPath, stringToWrite, function (err) {
+        if (err) {
+            throw err;
+        }
+    });
+}
+
+init();
 
 
 // Write code to use inquirer to gather information about the development team members,
