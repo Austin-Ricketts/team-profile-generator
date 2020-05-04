@@ -27,7 +27,7 @@ This application is installed from the command line, using the command: node app
 ### Usage
 
 This project uses [Node.js](https://nodejs.org/en/).
-And [npm](https://www.npmjs.com/). Within the npm module system, this app has a depency on [Inquirer](https://www.npmjs.com/package/inquirer).
+And [npm](https://www.npmjs.com/). Within the npm module system, this app has a depency on [Inquirer](https://www.npmjs.com/package/inquirer) to prompt the user for information from the command line, and it uses [Jest](https://jestjs.io/docs/en/getting-started) to run tests on functionality from the command line.
 
 ### License
 
@@ -44,7 +44,7 @@ Contributors should follow the [Contributor Covenant](https://www.contributor-co
 
 ### Tests
 
-After installation, you can check the functionality of the app [here](https://github.com/Austin-Ricketts/team-profile-generator/tree/master/test).
+After installation, you can check the functionality of the app [here](https://github.com/Austin-Ricketts/team-profile-generator/tree/master/test). Take a look at the documentation on [Jest](https://jestjs.io/docs/en/getting-started) to learn more about running tests within this application.
 
 ### Questions
 
